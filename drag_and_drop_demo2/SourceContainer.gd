@@ -1,6 +1,6 @@
 extends Panel
 
-@onready var draggable_scene := preload("res://demo2/Draggable.tscn")
+@onready var draggable_scene := preload("res://drag_and_drop_demo2/Draggable.tscn")
 @onready var draggable_container := $Padding/Row
 @onready var drop_target := get_node("/root/PanelContainer/VBoxContainer/DragAndDropColumns/TargetContainer")
 

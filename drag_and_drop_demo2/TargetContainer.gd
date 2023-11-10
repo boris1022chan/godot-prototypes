@@ -1,7 +1,7 @@
 extends Panel
 
 signal item_dropped_on_target(draggable)
-var draggable := preload("res://demo2/Draggable.tscn")
+var draggable := preload("res://drag_and_drop_demo2/Draggable.tscn")
 
 func _can_drop_data(at_position: Vector2, data: Variant) -> bool:
 	var can_drop: bool = data is Node and data.is_in_group("draggable")

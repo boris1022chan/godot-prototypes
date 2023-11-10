@@ -10,7 +10,6 @@ config_version=5
 
 [application]
 
-config/name="godot-drag-and-drop-prototype"
-run/main_scene="res://demo1/main.tscn"
+config/name="godot-prototypes"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
