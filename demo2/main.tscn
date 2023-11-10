@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://cvvcmdxawjuc7"]
+
+[ext_resource type="Script" path="res://demo2/SourceContainer.gd" id="1_lt1nu"]
+[ext_resource type="Script" path="res://demo2/TargetContainer.gd" id="2_m54c3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fv0q"]
+bg_color = Color(0, 0.639216, 0.937255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4xfsu"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cvhjy"]
+bg_color = Color(1, 1, 1, 0.698039)
+
+[node name="PanelContainer" type="PanelContainer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Headers" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SourceHeader" type="Panel" parent="VBoxContainer/Headers"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7fv0q")
+
+[node name="Label" type="Label" parent="VBoxContainer/Headers/SourceHeader"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -13.0
+offset_right = 26.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Source"
+horizontal_alignment = 1
+
+[node name="DividerHeader" type="Panel" parent="VBoxContainer/Headers"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_7fv0q")
+
+[node name="TargetHeader2" type="Panel" parent="VBoxContainer/Headers"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7fv0q")
+
+[node name="Label" type="Label" parent="VBoxContainer/Headers/TargetHeader2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.5
+offset_top = -13.0
+offset_right = 26.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 25
+text = "Target"
+horizontal_alignment = 1
+
+[node name="DragAndDropColumns" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SourceContainer" type="Panel" parent="VBoxContainer/DragAndDropColumns"]
+custom_minimum_size = Vector2(250, 598)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xfsu")
+script = ExtResource("1_lt1nu")
+
+[node name="Padding" type="MarginContainer" parent="VBoxContainer/DragAndDropColumns/SourceContainer"]
+layout_mode = 0
+offset_right = 250.0
+offset_bottom = 598.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Row" type="VBoxContainer" parent="VBoxContainer/DragAndDropColumns/SourceContainer/Padding"]
+layout_mode = 2
+
+[node name="SrcTargetDivider" type="Panel" parent="VBoxContainer/DragAndDropColumns"]
+custom_minimum_size = Vector2(250, 598)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_cvhjy")
+
+[node name="TargetContainer" type="Panel" parent="VBoxContainer/DragAndDropColumns"]
+custom_minimum_size = Vector2(250, 598)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4xfsu")
+script = ExtResource("2_m54c3")
+
+[node name="Padding" type="MarginContainer" parent="VBoxContainer/DragAndDropColumns/TargetContainer"]
+layout_mode = 2
+offset_right = 190.0
+offset_bottom = 90.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Row" type="VBoxContainer" parent="VBoxContainer/DragAndDropColumns/TargetContainer/Padding"]
+layout_mode = 2
+
+[connection signal="item_dropped_on_target" from="VBoxContainer/DragAndDropColumns/TargetContainer" to="VBoxContainer/DragAndDropColumns/SourceContainer" method="_on_target_container_item_dropped_on_target"]
